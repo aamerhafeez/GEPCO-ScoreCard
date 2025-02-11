@@ -193,22 +193,30 @@ app.get("/employees-by-office", async (req, res) => {
         return res.status(400).json({ error: "Office ID is required" });
     }
 
+    console.log("🔍 Fetching employees for office ID:", office_id); // Debugging log
+
+    const sql = `
+        SELECT DISTINCT e.employee_id, e.name, e.role, o.office_name
+        FROM employees e
+        JOIN offices o ON e.office_id = o.office_id
+        WHERE e.office_id = ? 
+        OR e.office_id IN (SELECT office_id FROM offices WHERE parent_office_id = ?)
+        OR (1=0 AND e.employee_id IN (
+            SELECT employee_id FROM transfers WHERE to_office_id = ? OR from_office_id = ?
+        ))
+    `;
+
     try {
-        const sql = `
-            SELECT employee_id, name, role, office_id 
-            FROM employees 
-            WHERE office_id = ?  -- ✅ Ensures only employees for the selected office are fetched
-        `;
-
-        const [results] = await db.execute(sql, [office_id]);
-
-        // console.log(`✅ Employees for Office ${office_id}:`, results);
+        const [results] = await db.execute(sql, [office_id, office_id, office_id, office_id]);
+        console.log("✅ Employees fetched:", results);
         res.json(results);
     } catch (err) {
-        // console.error("🔥 ERROR in /employees-by-office:", err);
+        console.error("❌ Database Error:", err);
         res.status(500).json({ error: "Database error", details: err.message });
     }
 });
+
+
 // Fetch all transfers
 app.get("/transfers", async (req, res) => {
     const sql = `
