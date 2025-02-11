@@ -1,0 +1,162 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dropdown-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.dropdown-group div {
+    flex: 1;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    width: 180px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #0056b3, #003d80);
+    transform: scale(1.02);
+}
+
+
+
+.target-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+.target-table th, .target-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.target-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.even-row {
+    background-color: #f2f2f2;
+}
+
+.odd-row {
+    background-color: #ffffff;
+}
+
+.target-table th:nth-child(5),
+.target-table td:nth-child(5) {
+    width: 80px; /* Reduce Achieved column width */
+}
+
+.target-table th:nth-child(6),
+.target-table td:nth-child(6) {
+    width: 220px; /* Further increase Actions column width */
+}
+
+.actions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.action-btn, .delete-btn {
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.action-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.action-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+}
